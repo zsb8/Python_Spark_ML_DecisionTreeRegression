@@ -67,21 +67,32 @@ As the result, the best RMSE is 143.2841, use the test data set to calcuate RMSE
 # Stage4: Predict
 ~~~
 def predict_data(best_model):
+    SeasonDict = {1: "Spring", 2: "Summer", 3: "Autumn", 4: "Winter"}
+    HoildayDict = {0: "NoHoliday", 1: "Holiday"}
+    WeekDict = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday"}
+    WorkDayDict = {1: "Workday", 0: "NoWorkday"}
+    WeatherDict = {1: "Sunny", 2: "Cloudy", 3: "Rain", 4: "Downpour"}
     for lp in label_point_RDD.take(20):
-        predict = best_model.predict(lp.features)
+        predict = int(best_model.predict(lp.features))
         label = lp.label
         features = lp.features
-        result = ("Correct" if  (label == predict) else "Error")
-        print("Forest：Elevation" + str(features[0]) +
-                 " Aspect:" + str(features[1]) +
-                 " Slope:" + str(features[2]) +
-                 " Vertical_Distance_To_Hydrology :" + str(features[3]) +
-                 " Horizontal_Distance_To_Hydrology:" + str(features[4]) +
-                 " Hillshade_9am :" + str(features[5]) +
-                 "....==>Predict:" + str(predict) +
-                 " Fact:" + str(label) + "Result:" + result)
+        error = abs(label - predict)
+        data_desc = "  Factors: " + SeasonDict[features[0]] + ',' + \
+                   "Month:" + str(features[1]) + ',' + \
+                   str(features[2]) + "Hour," + \
+                   HoildayDict[features[3]] + "," + \
+                   "WeekDay:" + WeekDict[features[4]] + "," + \
+                   WorkDayDict[features[5]] + "," + \
+                   WeatherDict[features[6]] + "," + \
+                   str(features[7] * 41) + " Celsius," + \
+                   "FeelsLike:" + format(features[8] * 50, '.2f') + " Celsius," + \
+                   "Humidity:" + format(features[9] * 100, '.1f') + "," + \
+                   "Wind:" + format(features[10] * 67, '.2f') + \
+                   " ==> Prediction:" + str(predict) + \
+                   "  , Real:" + str(label) + ",  Gap:" + str(error)
+        print(data_desc)
 ~~~
-![image](https://user-images.githubusercontent.com/75282285/194675371-c2aa861c-9f4f-444b-9da4-1eccea269a02.png)
+![image](https://user-images.githubusercontent.com/75282285/194721016-000fbbeb-36d2-40f7-b1f2-8c2e6bdc10be.png)
 
 
 # Spark monitor
