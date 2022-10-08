@@ -12,7 +12,7 @@ Placed the hour.csv on hadoop. Built 3 data sets: (1) Train data, (2) Validation
 
 ## Compare the parameters
 "maxDepth"
-Set the impurity='entropy' and bins=50, draw the graph for the numIterations. The RMSE is the highest when depth=3. 
+Set the impurity='variance' and bins=50, draw the graph for the numIterations. The RMSE is the highest when depth=3. 
 ~~~
     impurity_list = ["variance"]
     max_depth_list = [3, 5, 10, 15, 20, 25]
@@ -22,18 +22,19 @@ Set the impurity='entropy' and bins=50, draw the graph for the numIterations. Th
 
 
 "maxBins"
-Set the impurity='entropy' and depth=25, draw the graph for the numIterations. The accuracy is the highest when bins=50. 
+Set the impurity='variance' and depth=3, draw the graph for the numIterations. The RMSE is the highest when bins=5. 
 ~~~
-    impurity_list = ["entropy"]
-    max_depth_list = [25]
+    impurity_list = ["variance"]
+    max_depth_list = [3]
     max_bins_list = [3, 5, 10, 50, 100, 200]
 ~~~
-![image](https://user-images.githubusercontent.com/75282285/194675824-8ec50dc0-dee5-4760-ae58-fbb36fdc165e.png)
+![image](https://user-images.githubusercontent.com/75282285/194719315-f3a46599-f1af-48b2-96ed-0a12381c3725.png)
+
 
 
 # Stage2: Train and evaluate   
 Created the model using train data set.   
-Calculated the accuracy using validation data set.
+Calculated the RMSE using validation data set.
 Sorted the metrics.    
 Found the best parameters includ the best accuracy and the best model.  
 ~~~
@@ -43,8 +44,7 @@ def train_evaluation_model(train_data,
                            max_depth,
                            max_bins):
     start_time = time()
-    model = DecisionTree.trainClassifier(train_data,
-                                         numClasses=7,
+    model = DecisionTree.trainRegressor(train_data,
                                          categoricalFeaturesInfo={},
                                          impurity=impurity,
                                          maxDepth=max_depth,
@@ -54,12 +54,13 @@ def train_evaluation_model(train_data,
     duration = time() - start_time
     return accuracy, impurity, max_depth, max_bins, duration, model
 ~~~
-![image](https://user-images.githubusercontent.com/75282285/194676146-74caa6e2-2fac-4d4b-93b2-4328b2ab399f.png)
+![image](https://user-images.githubusercontent.com/75282285/194719343-cd54ec15-168c-4abc-b6cb-3962250d4cfb.png)
+
 
 
 # Stage3: Test
-Used the sub_test data set and the best model to calculate the AUC. If testing accuracy is similare as the best accuracy, it is OK.
-As the result, the best accuracy is  0.8755, use the test data set to calcuate accuracyis 0.8571, the difference is 0.0006, so it has not overfitting issue. 
+Used the sub_test data set and the best model to calculate the RMSE. If testing RMSE is similare as the best RMSE, it is OK.
+As the result, the best RMSE is  0.8755, use the test data set to calcuate RMSE is 0.8571, the difference is 0.0006, so it has not overfitting issue. 
 ![image](https://user-images.githubusercontent.com/75282285/194676169-0910d5b3-d5dc-4fd2-9dae-80122dad488e.png)
 
 
