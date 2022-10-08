@@ -60,8 +60,8 @@ def train_evaluation_model(train_data,
 
 # Stage3: Test
 Used the sub_test data set and the best model to calculate the RMSE. If testing RMSE is similare as the best RMSE, it is OK.
-As the result, the best RMSE is  0.8755, use the test data set to calcuate RMSE is 0.8571, the difference is 0.0006, so it has not overfitting issue. 
-![image](https://user-images.githubusercontent.com/75282285/194676169-0910d5b3-d5dc-4fd2-9dae-80122dad488e.png)
+As the result, the best RMSE is 143.2841, use the test data set to calcuate RMSE is 139.0207, the difference is 4.2634, so it has not overfitting issue. 
+![image](https://user-images.githubusercontent.com/75282285/194720733-07f3ad85-968d-4221-9d0c-5d8836ea7a15.png)
 
 
 # Stage4: Predict
