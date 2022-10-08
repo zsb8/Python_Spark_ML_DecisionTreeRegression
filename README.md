@@ -4,11 +4,11 @@ Data is pubic. We want to use ML to predict the number of bicycle rentals.
 Use RMSE (Root Mean Square Error) to find evergreen webside. 
 
 Running environment is Spark + Hadoop + PySpark    
-Used the algorithm is DecisionTree.     
-Used the library is pyspark.mllib and MulticlassMetrics. 
+Used the algorithm is DecisionTree regession.     
+Used the library is pyspark.mllib and RegessionMetrics. 
 
 # Stage1:  Read data
-Placed the tsv on hadoop. Built 3 data sets: (1) Train data, (2) Validation data, (3) Sub_test data.
+Placed the hour.csv on hadoop. Built 3 data sets: (1) Train data, (2) Validation data, (3) Sub_test data.
 
 ## Compare the parameters
 "maxDepth"
