@@ -12,7 +12,7 @@ Placed the tsv on hadoop. Built 3 data sets: (1) Train data, (2) Validation data
 
 ## Compare the parameters
 "maxDepth"
-Set the impurity='entropy' and bins=50, draw the graph for the numIterations. The accuracy is the highest when depth=25. 
+Set the impurity='entropy' and bins=50, draw the graph for the numIterations. The RMSE is the highest when depth=3. 
 ~~~
     impurity_list = ["variance"]
     max_depth_list = [3, 5, 10, 15, 20, 25]
