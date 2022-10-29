@@ -13,7 +13,7 @@ Placed the hour.csv on hadoop. Built 3 data sets: (1) Train data, (2) Validation
 ## Compare the parameters
 "maxDepth"
 Set the impurity='variance' and bins=50, draw the graph for the numIterations. The RMSE is the highest when depth=3. 
-~~~
+~~~python
     impurity_list = ["variance"]
     max_depth_list = [3, 5, 10, 15, 20, 25]
     max_bins_list = [50]
@@ -23,7 +23,7 @@ Set the impurity='variance' and bins=50, draw the graph for the numIterations. T
 
 "maxBins"
 Set the impurity='variance' and depth=3, draw the graph for the numIterations. The RMSE is the highest when bins=5. 
-~~~
+~~~python
     impurity_list = ["variance"]
     max_depth_list = [3]
     max_bins_list = [3, 5, 10, 50, 100, 200]
@@ -37,7 +37,7 @@ Created the model using train data set.
 Calculated the RMSE using validation data set.
 Sorted the metrics.    
 Found the best parameters includ the best accuracy and the best model.  
-~~~
+~~~python
 def train_evaluation_model(train_data,
                            validation_data,
                            impurity,
@@ -65,7 +65,7 @@ As the result, the best RMSE is 143.2841, use the test data set to calcuate RMSE
 
 
 # Stage4: Predict
-~~~
+~~~python
 def predict_data(best_model):
     SeasonDict = {1: "Spring", 2: "Summer", 3: "Autumn", 4: "Winter"}
     HoildayDict = {0: "NoHoliday", 1: "Holiday"}
