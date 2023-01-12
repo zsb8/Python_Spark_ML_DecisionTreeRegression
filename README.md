@@ -1,4 +1,4 @@
-Data is pubic. We want to use ML to predict the number of bicycle rentals. 
+Data is pubic. I used ML to predict the number of bicycle rentals. 
 
 # Python_Spark_ML_RMSE
 Use RMSE (Root Mean Square Error) to find evergreen webside. 
