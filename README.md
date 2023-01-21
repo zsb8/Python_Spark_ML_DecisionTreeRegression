@@ -1,3 +1,4 @@
+This a sample, not really business code. I won't expose the company's code. 
 Data is pubic. I used ML to predict the number of bicycle rentals. 
 
 # Python_Spark_ML_RMSE
